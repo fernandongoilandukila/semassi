@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicas de Código para Iniciantes</title>
+    <style>
+      :root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --card-background: #fff;
+    --text-color: #333;
+    --shadow-light: rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.menu a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+main {
+    padding: 2rem 0;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+pre {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+pre code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Dev Dicas</h1>
+            <nav class="menu">
+                <a href="#dicas-recentes">Dicas Recentes</a>
+                <a href="#tutoriais">Tutoriais</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="dicas-recentes">
+            <h2>Dicas Recentes</h2>
+            <div id="lista-dicas">
+                </div>
+        </section>
+
+        <section id="tutoriais">
+            <h2>Tutoriais</h2>
+            <div id="lista-tutoriais">
+                </div>
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre</h2>
+            <p>Bem-vindo ao Dev Dicas! Nosso objetivo é descomplicar a programação para quem está começando. Aqui, você encontrará dicas rápidas, tutoriais práticos e explicações claras para te ajudar na sua jornada de aprendizado.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Dev Dicas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script >
+      document.addEventListener('DOMContentLoaded', () => {
+
+    const dicas = [
+        {
+            titulo: 'O que é HTML?',
+            conteudo: 'HTML (HyperText Markup Language) é a linguagem de marcação usada para criar a estrutura e o conteúdo de páginas web. É a base de todos os sites.',
+            codigo: `<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Minha Página</title>
+  </head>
+  <body>
+    <h1>Olá, mundo!</h1>
+    <p>Este é um parágrafo de exemplo.</p>
+  </body>
+</html>`
+        },
+        {
+            titulo: 'O que é CSS?',
+            conteudo: 'CSS (Cascading Style Sheets) é a linguagem de estilo usada para definir a aparência visual de um site. Com ele, você controla cores, fontes, layouts e muito mais.',
+            codigo: `h1 {
+  color: blue;
+  font-family: Arial, sans-serif;
+}
+.botao {
+  background-color: green;
+  color: white;
+}`
+        }
+    ];
+
+    const tutoriais = [
+        {
+            titulo: 'Como usar Variáveis em JavaScript',
+            conteudo: 'Variáveis são como caixas que guardam informações. Em JavaScript, você pode usar `let`, `const` e `var` para declará-las. Recomendamos o uso de `const` para valores que não mudam e `let` para os que mudam.',
+            codigo: `const nome = 'João'; // Valor fixo
+let idade = 25; // Valor que pode mudar
+idade = 26; 
+console.log(nome); // Saída: João
+console.log(idade); // Saída: 26`
+        }
+    ];
+
+    function criarCard(dado, elementoPaiId) {
+        const elementoPai = document.getElementById(elementoPaiId);
+        
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        card.innerHTML = `
+            <h3>${dado.titulo}</h3>
+            <p>${dado.conteudo}</p>
+            <pre><code>${dado.codigo}</code></pre>
+        `;
+        elementoPai.appendChild(card);
+    }
+
+    dicas.forEach(dica => criarCard(dica, 'lista-dicas'));
+    tutoriais.forEach(tutorial => criarCard(tutorial, 'lista-tutoriais'));
+
+});
+    </script>
+</body>
+</html>
